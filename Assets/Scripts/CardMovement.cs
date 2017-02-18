@@ -52,7 +52,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	}
 
 	public void OnDrag (PointerEventData eventData) {
-		Vector3 position = Input.mousePosition;
+		Vector3 position = Input.mousePosition + (Vector3.up * Screen.height * 0.15f);
 		if (Mathf.Abs (position.y) > yLimit) {
 			// TODO Implement y limit
 //			position.y = Mathf.Sign (position.y) * yLimit;
