@@ -157,7 +157,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 30
+  m_Text: 
 --- !u!222 &25144743
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -591,8 +591,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Suprised to meet a business woman? In my country, women are not vacuous
-    slugs like the ones in your court
+  m_Text: 
 --- !u!222 &739673570
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -815,7 +814,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PRINCESS MAISHA
+  m_Text: 
 --- !u!222 &976442216
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1216,6 +1215,7 @@ GameObject:
   - 81: {fileID: 1476194013}
   - 114: {fileID: 1476194018}
   - 114: {fileID: 1476194019}
+  - 114: {fileID: 1476194020}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1326,6 +1326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _SOLO_TEST: 0
   _LINEAR_MODE: 1
+  _BYPASS_PROBABILTY: 1
   familyLevel: 50
   loveLevel: 50
   moneyLevel: 50
@@ -1337,13 +1338,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -1359,13 +1360,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: F**k that s**t!
-      family: -60
+      fun: 0
       love: -40
       money: 0
       health: -50
     rightOutcome:
       description: Please help me!
-      family: -5
+      fun: 0
       love: -5
       money: -40
       health: -50
@@ -1381,13 +1382,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -1403,13 +1404,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -1425,13 +1426,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -1447,13 +1448,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -1469,13 +1470,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -1491,13 +1492,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -1513,13 +1514,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -1535,13 +1536,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -1559,13 +1560,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: 
-      family: 0
+      fun: 0
       love: 0
       money: 0
       health: 0
     rightOutcome:
       description: 
-      family: 0
+      fun: 0
       love: 0
       money: 0
       health: 0
@@ -1576,6 +1577,20 @@ MonoBehaviour:
       probability: 0
       maxUse: 0
       currentUsage: 0
+--- !u!114 &1476194020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476194012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ceea2fa36c0843b2ad7d7effea3816c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDeck:
+    cards: []
+  manager: {fileID: 1476194018}
 --- !u!1 &1747649874
 GameObject:
   m_ObjectHideFlags: 0

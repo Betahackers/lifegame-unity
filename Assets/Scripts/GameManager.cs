@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour {
 	public Image loveImage, funImage, healthImage, moneyImage;
 
 	// Use this for initialization
-	void Start () {
-		cardManager.StartDeck ();
+	public void Init () {
+//		cardManager.StartDeck ();
 		SetPlayerData ();
 
 		cardGOs [0].Init (OnCardSwiped, true);
@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour {
 		// TODO Also send the card image
 		question.text = cardData.cardText;
 		characterName.text = cardData.characterName.ToUpper ();
+		CardData.Outcome outcome = cardData.rightOutcome;
+		Debug.Log ("outcome: " + outcome);
 		cardMovement.SetAnswers (cardData.leftOutcome.description, cardData.rightOutcome.description);
 	}
 }

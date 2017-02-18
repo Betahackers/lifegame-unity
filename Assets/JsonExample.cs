@@ -6,6 +6,7 @@ public class JsonExample : MonoBehaviour {
 
 
 	public JSON_Deck gameDeck;
+	public GameManager manager;
 
 
 	// Use this for initialization
@@ -35,6 +36,7 @@ public class JsonExample : MonoBehaviour {
 		} 
 
 		CardManager.instance.GetCardData ();
+		manager.Init ();
 	}
 	
 	// Update is called once per frame

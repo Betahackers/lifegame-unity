@@ -181,6 +181,8 @@ public class CardManager : MonoBehaviour {
 			for (int j = 0; j < _json.gameDeck.cards[i].answers.Length; j++) {
 				CardData.Outcome outcome = new CardData.Outcome ();
 				for (int k = 0; k < _json.gameDeck.cards[i].answers[j].points.Length; k++) {
+					// Store answer's description
+					outcome.description = _json.gameDeck.cards[i].answers[j].text;
 					// We must manually detect each point type to store
 					switch(_json.gameDeck.cards[i].answers[j].points[k].slug)
 					{
@@ -199,7 +201,7 @@ public class CardManager : MonoBehaviour {
 					}
 				}
 				// Add this outcome to the right swipe
-				if (_json.gameDeck.cards [i].answers [j].type == "Right")
+				if (_json.gameDeck.cards [i].answers [j].type.ToLower () == "right")
 					newCard.rightOutcome = outcome;
 				else
 					newCard.leftOutcome = outcome;
