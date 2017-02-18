@@ -90,6 +90,80 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &221137134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 221137135}
+  - 222: {fileID: 221137137}
+  - 114: {fileID: 221137136}
+  m_Layer: 5
+  m_Name: Max Usage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &221137135
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 221137134}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1862677622}
+  m_RootOrder: 4
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &221137136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 221137134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 80
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 80
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Max Usage: 0'
+--- !u!222 &221137137
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 221137134}
 --- !u!1 &318826062
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,10 +249,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 968957488}
   - {fileID: 471448562}
   - {fileID: 1202085109}
   - {fileID: 891916137}
   - {fileID: 1862677622}
+  - {fileID: 952644641}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
@@ -242,11 +318,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 100
+    m_FontSize: 80
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 135
+    m_BestFit: 1
+    m_MinSize: 8
+    m_MaxSize: 80
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -260,6 +336,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 372046132}
+--- !u!1 &414926686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 414926687}
+  - 222: {fileID: 414926689}
+  - 114: {fileID: 414926688}
+  m_Layer: 5
+  m_Name: Character Name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &414926687
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 414926686}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 968957488}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &414926688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 414926686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 80
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 8
+    m_MaxSize: 80
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &414926689
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 414926686}
 --- !u!1 &471448561
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,10 +441,10 @@ RectTransform:
   m_Children:
   - {fileID: 1697790705}
   m_Father: {fileID: 318826066}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290, y: 15}
+  m_AnchoredPosition: {x: -290, y: 194}
   m_SizeDelta: {x: 299, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &471448563
@@ -335,7 +485,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 471448564}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 576843568}
+        m_MethodName: Swipe
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &471448564
@@ -380,6 +541,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 576843569}
   - 114: {fileID: 576843568}
+  - 114: {fileID: 576843570}
   m_Layer: 0
   m_Name: _GAME CENTRAL_
   m_TagString: Untagged
@@ -399,6 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _SOLO_TEST: 1
+  _LINEAR_MODE: 0
   familyLevel: 50
   loveLevel: 50
   moneyLevel: 50
@@ -421,10 +584,12 @@ MonoBehaviour:
       money: 0
       health: 0
     chances:
-      probability: 0
       ageConstraint: 0
       ageChanceBase: 70
       ageChanceIncrement: -3
+      probability: 0
+      maxUse: 0
+      currentUsage: 0
   - characterName: Cancer
     cardText: 
     cradImage: {fileID: 0}
@@ -441,10 +606,12 @@ MonoBehaviour:
       money: -40
       health: -50
     chances:
-      probability: 0
       ageConstraint: 15
       ageChanceBase: 0.5
       ageChanceIncrement: 0.5
+      probability: 0
+      maxUse: 0
+      currentUsage: 0
   - characterName: Card 3
     cardText: 
     cradImage: {fileID: 0}
@@ -461,10 +628,12 @@ MonoBehaviour:
       money: 0
       health: 0
     chances:
-      probability: 0
-      ageConstraint: 0
+      ageConstraint: 15
       ageChanceBase: 0
       ageChanceIncrement: 0
+      probability: 0
+      maxUse: 0
+      currentUsage: 0
   - characterName: Card 4
     cardText: 
     cradImage: {fileID: 0}
@@ -481,10 +650,12 @@ MonoBehaviour:
       money: 0
       health: 0
     chances:
+      ageConstraint: -30
+      ageChanceBase: 2
+      ageChanceIncrement: 0.5
       probability: 0
-      ageConstraint: 0
-      ageChanceBase: 0
-      ageChanceIncrement: 0
+      maxUse: 3
+      currentUsage: 0
   - characterName: Card 5
     cardText: 
     cradImage: {fileID: 0}
@@ -501,10 +672,12 @@ MonoBehaviour:
       money: 0
       health: 0
     chances:
+      ageConstraint: 20
+      ageChanceBase: 80
+      ageChanceIncrement: -2.3
       probability: 0
-      ageConstraint: 0
-      ageChanceBase: 0
-      ageChanceIncrement: 0
+      maxUse: 0
+      currentUsage: 0
   - characterName: Card 6
     cardText: 
     cradImage: {fileID: 0}
@@ -521,10 +694,12 @@ MonoBehaviour:
       money: 0
       health: 0
     chances:
-      probability: 0
-      ageConstraint: 0
+      ageConstraint: 60
       ageChanceBase: 0
       ageChanceIncrement: 0
+      probability: 0
+      maxUse: 1
+      currentUsage: 0
   - characterName: Card 7
     cardText: 
     cradImage: {fileID: 0}
@@ -541,10 +716,12 @@ MonoBehaviour:
       money: 0
       health: 0
     chances:
+      ageConstraint: -30
+      ageChanceBase: 7
+      ageChanceIncrement: 1.4
       probability: 0
-      ageConstraint: 0
-      ageChanceBase: 0
-      ageChanceIncrement: 0
+      maxUse: 0
+      currentUsage: 0
   - characterName: Card 8
     cardText: 
     cradImage: {fileID: 0}
@@ -561,10 +738,12 @@ MonoBehaviour:
       money: 0
       health: 0
     chances:
+      ageConstraint: -30
+      ageChanceBase: 50
+      ageChanceIncrement: 2.5
       probability: 0
-      ageConstraint: 0
-      ageChanceBase: 0
-      ageChanceIncrement: 0
+      maxUse: 4
+      currentUsage: 0
   - characterName: Card 9
     cardText: 
     cradImage: {fileID: 0}
@@ -581,10 +760,12 @@ MonoBehaviour:
       money: 0
       health: 0
     chances:
-      probability: 0
-      ageConstraint: 0
+      ageConstraint: 35
       ageChanceBase: 0
-      ageChanceIncrement: 0
+      ageChanceIncrement: 1.5
+      probability: 0
+      maxUse: 0
+      currentUsage: 0
   - characterName: Card 10
     cardText: 
     cradImage: {fileID: 0}
@@ -601,10 +782,12 @@ MonoBehaviour:
       money: 0
       health: 0
     chances:
+      ageConstraint: -60
+      ageChanceBase: 40
+      ageChanceIncrement: -3.5
       probability: 0
-      ageConstraint: 0
-      ageChanceBase: 0
-      ageChanceIncrement: 0
+      maxUse: 20
+      currentUsage: 0
   turnPool: []
   _activeCard:
     characterName: 
@@ -623,10 +806,12 @@ MonoBehaviour:
       money: 0
       health: 0
     chances:
-      probability: 0
       ageConstraint: 0
       ageChanceBase: 0
       ageChanceIncrement: 0
+      probability: 0
+      maxUse: 0
+      currentUsage: 0
 --- !u!4 &576843569
 Transform:
   m_ObjectHideFlags: 0
@@ -640,6 +825,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &576843570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 576843567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d255ac1c6f3034b96ae41341d48870d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  familiLabel: {fileID: 989010090}
+  loveLabel: {fileID: 777365948}
+  moneyLabel: {fileID: 372046134}
+  healthLabel: {fileID: 1396415965}
+  probabilityLabel: {fileID: 1403281067}
+  ageConstraintLabel: {fileID: 693471188}
+  ageChanceBase: {fileID: 1366321976}
+  ageChanceIncrementLabel: {fileID: 2129157832}
+  maxUsageLabel: {fileID: 221137136}
 --- !u!1 &693471186
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,11 +1062,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 100
+    m_FontSize: 80
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 135
+    m_BestFit: 1
+    m_MinSize: 8
+    m_MaxSize: 80
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -907,11 +1112,11 @@ RectTransform:
   - {fileID: 372046133}
   - {fileID: 1396415964}
   m_Father: {fileID: 318826066}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 553}
-  m_SizeDelta: {x: 923, y: 691}
+  m_AnchoredPosition: {x: 0, y: -118}
+  m_SizeDelta: {x: 923, y: 449}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &891916138
 MonoBehaviour:
@@ -919,6 +1124,130 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 891916136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297475563, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+--- !u!1 &952644640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 952644641}
+  - 222: {fileID: 952644643}
+  - 114: {fileID: 952644642}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &952644641
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952644640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 318826066}
+  m_RootOrder: 5
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 704}
+  m_SizeDelta: {x: 474, y: 407}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &952644642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952644640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &952644643
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952644640}
+--- !u!1 &968957487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 968957488}
+  - 114: {fileID: 968957489}
+  m_Layer: 5
+  m_Name: Car Definition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &968957488
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 968957487}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 414926687}
+  - {fileID: 1683822141}
+  m_Father: {fileID: 318826066}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 360}
+  m_SizeDelta: {x: 923, y: 205}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &968957489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 968957487}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1297475563, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
@@ -989,11 +1318,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 100
+    m_FontSize: 80
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 135
+    m_BestFit: 1
+    m_MinSize: 8
+    m_MaxSize: 80
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1136,7 +1465,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Left Swipe
+  m_Text: "Right\n Swipe"
 --- !u!222 &1153250723
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1174,10 +1503,10 @@ RectTransform:
   m_Children:
   - {fileID: 1153250721}
   m_Father: {fileID: 318826066}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 289, y: 15}
+  m_AnchoredPosition: {x: 289, y: 194}
   m_SizeDelta: {x: 299, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1202085110
@@ -1218,7 +1547,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1202085111}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 576843568}
+        m_MethodName: Swipe
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1202085111
@@ -1384,11 +1724,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 100
+    m_FontSize: 80
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 135
+    m_BestFit: 1
+    m_MinSize: 8
+    m_MaxSize: 80
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1476,6 +1816,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1403281065}
+--- !u!1 &1683822140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1683822141}
+  - 222: {fileID: 1683822143}
+  - 114: {fileID: 1683822142}
+  m_Layer: 5
+  m_Name: Card Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1683822141
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1683822140}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999875, y: 0.99999875, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 968957488}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1683822142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1683822140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 80
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 8
+    m_MaxSize: 80
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &1683822143
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1683822140}
 --- !u!1 &1697790704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,12 +1995,13 @@ RectTransform:
   - {fileID: 693471187}
   - {fileID: 1366321975}
   - {fileID: 2129157831}
+  - {fileID: 221137135}
   m_Father: {fileID: 318826066}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -491}
-  m_SizeDelta: {x: 923, y: 691}
+  m_AnchoredPosition: {x: 0, y: -624}
+  m_SizeDelta: {x: 923, y: 426}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1862677623
 MonoBehaviour:

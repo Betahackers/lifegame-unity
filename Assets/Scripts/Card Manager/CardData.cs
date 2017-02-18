@@ -34,10 +34,12 @@ public class CardData : MonoBehaviour {
 	[System.Serializable]
 	public class Chances
 	{
-		public int probability;
-
 		public int ageConstraint;
 		public float ageChanceBase;
 		public float ageChanceIncrement;
+
+		public int probability;
+		public int maxUse;
+		[HideInInspector]public int currentUsage;
 	}
 }
