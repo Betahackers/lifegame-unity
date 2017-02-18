@@ -15,8 +15,8 @@ public class CardManager : MonoBehaviour {
 	public int moneyLevel = 50;
 	public int healthLevel = 50;
 
-	[SerializeField]private int _yearsPassed;
-	private readonly int _initialAge = 21;
+	[SerializeField]public int _yearsPassed;
+	public readonly int _initialAge = 21;
 
 
 	[Tooltip("All game's cards. We'll build the pool each turn from here")]
@@ -56,7 +56,7 @@ public class CardManager : MonoBehaviour {
 		BuildPool();
 	}
 
-	public void BuildPool () {
+	private void BuildPool () {
 		// Erase the actual pool
 		turnPool = new List<CardData.Settings>();
 

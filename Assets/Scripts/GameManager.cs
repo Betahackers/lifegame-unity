@@ -5,26 +5,41 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
+	public CardManager cardManager;
 	public List <CardMovement> cardGOs;
-	public Text question, characterName;
+	public Text question, characterName, age;
 	public Image loveImage, funImage, healthImage, moneyImage;
-
-	private int cardCounter;
 
 	// Use this for initialization
 	void Start () {
-		cardCounter = 0;
+		cardManager.StartDeck ();
+		SetPlayerData ();
+
 		cardGOs [0].Init (OnCardSwiped, true);
-		cardGOs [0].SetAnswers ("Yes " + cardCounter, "No " + cardCounter);
-		cardCounter++;
+		SetCardData (cardGOs [0], cardManager.PickCard ());
 		cardGOs [1].Init (OnCardSwiped, false);
-		cardGOs [1].SetAnswers ("Yes " + cardCounter, "No " + cardCounter);
-		cardCounter++;
+		SetCardData (cardGOs [1], cardManager.PickCard ());
+	}
+
+	void SetPlayerData () {
+		age.text = (cardManager._initialAge + cardManager._yearsPassed).ToString ();
+		loveImage.fillAmount = cardManager.loveLevel / 100f;
+		funImage.fillAmount = cardManager.familyLevel / 100f;
+		healthImage.fillAmount = cardManager.healthLevel / 100f;
+		moneyImage.fillAmount = cardManager.moneyLevel / 100f;
 	}
 
 	void OnCardSwiped (CardMovement swipedCard) {
 		CardMovement.SwipeDirection swipeDirection = swipedCard.GetSwipeResult ();
-		swipedCard.SetAnswers ("Yes " + cardCounter, "No " + cardCounter);
-		cardCounter++;
+		cardManager.Swipe (swipeDirection == CardMovement.SwipeDirection.Right);
+		SetCardData (swipedCard, cardManager.PickCard ());
+		SetPlayerData ();
+	}
+
+	void SetCardData (CardMovement cardMovement, CardData.Settings cardData) {
+		// TODO Also send the card image
+		question.text = cardData.cardText;
+		characterName.text = cardData.characterName.ToUpper ();
+		cardMovement.SetAnswers (cardData.leftOutcome.description, cardData.rightOutcome.description);
 	}
 }

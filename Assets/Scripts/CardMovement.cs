@@ -7,6 +7,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
 	public GameObject answerPanel;
 	public Text answerText;
+	public RawImage cardImage;
 
 	public float movingSpeed = 1500f;
 	public float swipingSpeed = 2500f;
