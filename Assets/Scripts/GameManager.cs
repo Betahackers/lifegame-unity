@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour {
 	public List <CardMovement> cardGOs;
 	public Text question, characterName, age;
 	public Image loveImage, funImage, healthImage, moneyImage;
+	public GameObject loadingPanel;
 
 	// Use this for initialization
 	public void Init () {
+		loadingPanel.SetActive (false);
 //		cardManager.StartDeck ();
 		SetPlayerData ();
 
