@@ -148,7 +148,7 @@ public class CardManager : MonoBehaviour {
 		moneyLevel += outcome.money;
 		healthLevel += outcome.health;
 		// Pass the time
-		_yearsPassed++;
+		_yearsPassed += Random.Range(1, 5);
 		BuildPool ();
 
 		if (_SOLO_TEST)
