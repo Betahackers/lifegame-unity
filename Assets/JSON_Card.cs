@@ -5,11 +5,11 @@ namespace AssemblyCSharp
 	[System.Serializable]
 	public class JSON_Card
 	{
-		int id;
-		string title;
-		string person;
-		string url_image;
-		JSON_Answer[] answers;
+		public int id;
+		public string title;
+		public string person;
+		public string url_image;
+		public JSON_Answer[] answers;
 
 		public JSON_Card ()
 		{

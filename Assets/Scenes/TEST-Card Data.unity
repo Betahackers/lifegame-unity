@@ -542,6 +542,7 @@ GameObject:
   - 4: {fileID: 576843569}
   - 114: {fileID: 576843568}
   - 114: {fileID: 576843570}
+  - 114: {fileID: 576843571}
   m_Layer: 0
   m_Name: _GAME CENTRAL_
   m_TagString: Untagged
@@ -562,6 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _SOLO_TEST: 1
   _LINEAR_MODE: 0
+  _BYPASS_PROBABILTY: 1
   familyLevel: 50
   loveLevel: 50
   moneyLevel: 50
@@ -573,13 +575,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -595,13 +597,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: F**k that s**t!
-      family: -60
+      fun: 0
       love: -40
       money: 0
       health: -50
     rightOutcome:
       description: Please help me!
-      family: -5
+      fun: 0
       love: -5
       money: -40
       health: -50
@@ -617,13 +619,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -639,13 +641,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -661,13 +663,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -683,13 +685,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -705,13 +707,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -727,13 +729,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -749,13 +751,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -771,13 +773,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: Sure!
-      family: 0
+      fun: 0
       love: -25
       money: -3
       health: 3
     rightOutcome:
       description: No...
-      family: 2
+      fun: 0
       love: 5
       money: 0
       health: 0
@@ -795,13 +797,13 @@ MonoBehaviour:
     cradImage: {fileID: 0}
     leftOutcome:
       description: 
-      family: 0
+      fun: 0
       love: 0
       money: 0
       health: 0
     rightOutcome:
       description: 
-      family: 0
+      fun: 0
       love: 0
       money: 0
       health: 0
@@ -845,6 +847,19 @@ MonoBehaviour:
   ageChanceBase: {fileID: 1366321976}
   ageChanceIncrementLabel: {fileID: 2129157832}
   maxUsageLabel: {fileID: 221137136}
+--- !u!114 &576843571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 576843567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ceea2fa36c0843b2ad7d7effea3816c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDeck:
+    cards: []
 --- !u!1 &693471186
 GameObject:
   m_ObjectHideFlags: 0

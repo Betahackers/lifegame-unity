@@ -25,7 +25,7 @@ public class CardData : MonoBehaviour {
 	{
 		public string description;
 
-		public int family;
+		public int fun;
 		public int love;
 		public int money;
 		public int health;
