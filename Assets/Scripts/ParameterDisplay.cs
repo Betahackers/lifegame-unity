@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -12,7 +12,12 @@ public class ParameterDisplay : MonoBehaviour {
 	private Image fillImage;
 	private float targetAmount;
 	private float startAmount;
-	private float speed = 0.5f;
+	private float speed = 1f;
+	private float speedColor = 15f;
+
+	private Color defaultColor = new Color(255f/256f, 72f/256f, 93f/256f);
+	private Color upColor = new Color(80f/256f, 277f/256f, 194f/256f);
+	private Color downColor = new Color(30f/256f, 59f/256f, 81f/256f);
 
 	// Use this for initialization
 	public void Init () {
@@ -28,8 +33,15 @@ public class ParameterDisplay : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		if (fillImage != null && fillImage.fillAmount*100 != targetAmount) {
-			fillImage.fillAmount  = Mathf.MoveTowards (fillImage.fillAmount, targetAmount/100f,(speed*Time.deltaTime));
+		if (!Mathf.Approximately(fillImage.fillAmount * 100,targetAmount)) {
+			if (targetAmount > fillImage.fillAmount * 100) {
+				fillImage.color = upColor;
+			} else {
+				fillImage.color = downColor;
+			}
+			fillImage.fillAmount = Mathf.MoveTowards (fillImage.fillAmount, targetAmount / 100f, (speed * Time.deltaTime));
+		} else {
+			fillImage.color = Color.Lerp (fillImage.color, defaultColor,(speedColor * Time.deltaTime));
 		}
 	}
 }
