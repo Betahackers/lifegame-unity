@@ -51,6 +51,14 @@ public class GameManager : MonoBehaviour {
 		DisplayPlayerData ();
 		CardMovement nextCard = (swipedCard == cardGOs [0]) ? cardGOs [1] : cardGOs [0];
 		DisplayCardData (nextCard);
+		resetSelectors ();
+	}
+
+	void resetSelectors(){
+		parameterLove.ShowHide(false);
+		parameterFun.ShowHide(false);
+		parameterHealth.ShowHide(false);
+		parameterMoney.ShowHide(false);
 	}
 
 	void OnCardAnswerDisplayed (int loveDelta, int funDelta, int healthDelta, int moneyDelta) {
