@@ -6,8 +6,12 @@ public class CardDownloader : MonoBehaviour {
 
 	public JSON_Deck gameDeck;
 
+	public delegate void OnCardsDownloaded ();
+	private OnCardsDownloaded onCardsDownloaded;
+
 	// Use this for initialization
-	void Start () {
+	public void Init (OnCardsDownloaded onCardsDownloaded) {
+		this.onCardsDownloaded = onCardsDownloaded;
 		WWW www = new WWW("https://lifegame-api.herokuapp.com/cards");
 		StartCoroutine(WaitForRequest(www));
 		DontDestroyOnLoad (gameObject);
@@ -34,7 +38,7 @@ public class CardDownloader : MonoBehaviour {
 		} 
 
 		CardManager.instance.Init ();
-		Scenes.LoadScene (Scenes.Main);
+		this.onCardsDownloaded ();
 	}
 	
 	// Update is called once per frame
