@@ -77,7 +77,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 //			position.y = Mathf.Sign (position.y) * yLimit;
 		}
 
-		float factor = 1;
 
 		Vector3 lastPosition = this.transform.position;
 		this.transform.position = position;
