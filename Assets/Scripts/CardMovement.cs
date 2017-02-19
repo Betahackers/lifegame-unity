@@ -30,6 +30,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	public delegate void OnAnswerHidden ();
 
 	void Start () {
+		Debug.Log ("Start:" + startPosition);
 		this.startPosition = this.transform.position;
 	}
 
@@ -67,11 +68,45 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	public void OnDrag (PointerEventData eventData) {
 //		Vector3 position = Input.mousePosition + _fingerOffset;
 		Vector3 position = Input.mousePosition + (Vector3.up * Screen.height * 0.15f);
+
 		if (Mathf.Abs (position.y) > yLimit) {
 			// TODO Implement y limit
 //			position.y = Mathf.Sign (position.y) * yLimit;
 		}
+
+		float factor = 1;
+
+		Vector3 lastPosition = this.transform.position;
 		this.transform.position = position;
+
+		/*
+		 //This a misstry to rotate the image ;(
+		 if (GetSwipeDirection () == SwipeDirection.Right) {
+			Debug.Log ("SwipeDirection: Right");
+			if (lastPosition.x < this.transform.position.x) {
+				factor = 1;
+			} else {
+				factor = -1;
+			}
+		
+		} else {
+			Debug.Log ("SwipeDirection: Left");
+			if (lastPosition.x > this.transform.position.x) {
+				factor = 1;
+			} else {
+				factor = -1;
+			}
+		}
+		Vector3 rotation = new Vector3();
+		rotation.x = 0;
+		rotation.y = 0;
+		rotation.z = 1;//;factor * (Screen.width/2 - (this.transform.position.x));
+
+		rotation.Normalize ();
+
+		this.transform.Rotate (rotation);
+		*/
+
 
 		// TODO Change this later
 //		Vector3 displacement = Input.mousePosition - this.dragPosition;
