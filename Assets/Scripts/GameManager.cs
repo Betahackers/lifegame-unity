@@ -64,8 +64,8 @@ public class GameManager : MonoBehaviour {
 			DisplayCardData (nextCard);
 			resetSelectors ();	
 		} else {
-			// TODO Implement a game over
-			Debug.Log ("GAME OVER! reason: " + overReason.ToString());
+			GameOver.SetupGameOver (overReason, cardManager._initialAge + cardManager._yearsPassed);
+			Scenes.LoadScene (Scenes.GameOver);
 		}
 	}
 
