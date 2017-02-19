@@ -24,7 +24,7 @@ public class ParameterDisplay : MonoBehaviour {
 			c.a = 0f;
 		}
 
-		selectedImage.color = c; 
+		selectedImage.color = c;
 	}
 
 	public void Fill(float amount){
