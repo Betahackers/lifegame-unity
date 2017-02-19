@@ -263,21 +263,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000012478526844, guid: 8d4ea84f657634c26a8d1e64bd5807df, type: 2}
       propertyPath: m_Name
-      value: Card
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012748875888, guid: 8d4ea84f657634c26a8d1e64bd5807df,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 28f400a7489a54c099596e671c905ee4,
-        type: 3}
-    - target: {fileID: 1000012478526844, guid: 8d4ea84f657634c26a8d1e64bd5807df, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013504355640, guid: 8d4ea84f657634c26a8d1e64bd5807df, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+      value: Card 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d4ea84f657634c26a8d1e64bd5807df, type: 2}
@@ -517,7 +503,6 @@ RectTransform:
   - {fileID: 1376378587}
   - {fileID: 1747649875}
   - {fileID: 1194546312}
-  - {fileID: 593992006}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
@@ -525,75 +510,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &593992005
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 593992006}
-  - 222: {fileID: 593992008}
-  - 114: {fileID: 593992007}
-  m_Layer: 5
-  m_Name: Loading Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &593992006
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 593992005}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 938866182}
-  m_Father: {fileID: 499889972}
-  m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &593992007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 593992005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.28676468, g: 0.28676468, b: 0.28676468, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &593992008
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 593992005}
 --- !u!1 &739673567
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,80 +733,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 855731435}
---- !u!1 &938866181
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 938866182}
-  - 222: {fileID: 938866184}
-  - 114: {fileID: 938866183}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &938866182
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 938866181}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 593992006}
-  m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 400}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &938866183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 938866181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 6
-    m_MaxSize: 80
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Loading....
---- !u!222 &938866184
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 938866181}
 --- !u!1 &976442213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,6 +1184,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012478526844, guid: 8d4ea84f657634c26a8d1e64bd5807df, type: 2}
+      propertyPath: m_Name
+      value: Card 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012748875888, guid: 8d4ea84f657634c26a8d1e64bd5807df,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e8467dfe531f24ed39b0b32a7188d150,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d4ea84f657634c26a8d1e64bd5807df, type: 2}
   m_IsPrefabParent: 0
@@ -1358,8 +1210,6 @@ GameObject:
   - 124: {fileID: 1476194014}
   - 81: {fileID: 1476194013}
   - 114: {fileID: 1476194018}
-  - 114: {fileID: 1476194019}
-  - 114: {fileID: 1476194020}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1446,7 +1296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999b22fb859524957a58a4344b60b355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardManager: {fileID: 1476194019}
   cardGOs:
   - {fileID: 44833672}
   - {fileID: 753835826}
@@ -1457,285 +1306,6 @@ MonoBehaviour:
   funImage: {fileID: 386451140}
   healthImage: {fileID: 280260328}
   moneyImage: {fileID: 1809241641}
-  loadingPanel: {fileID: 593992005}
---- !u!114 &1476194019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1476194012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 742034d59a459494ead157b6851d63a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _SOLO_TEST: 0
-  _LINEAR_MODE: 0
-  _BYPASS_PROBABILTY: 1
-  familyLevel: 50
-  loveLevel: 50
-  moneyLevel: 50
-  healthLevel: 50
-  _yearsPassed: 0
-  gameDeck:
-  - characterName: Play Football
-    cardText: Fooootball
-    cradImage: {fileID: 0}
-    leftOutcome:
-      description: Sure!
-      fun: 0
-      love: -25
-      money: -3
-      health: 3
-    rightOutcome:
-      description: No...
-      fun: 0
-      love: 5
-      money: 0
-      health: 0
-    chances:
-      ageConstraint: 0
-      ageChanceBase: 70
-      ageChanceIncrement: -3
-      probability: 0
-      maxUse: 0
-      currentUsage: 0
-  - characterName: Cancer
-    cardText: 
-    cradImage: {fileID: 0}
-    leftOutcome:
-      description: F**k that s**t!
-      fun: 0
-      love: -40
-      money: 0
-      health: -50
-    rightOutcome:
-      description: Please help me!
-      fun: 0
-      love: -5
-      money: -40
-      health: -50
-    chances:
-      ageConstraint: 15
-      ageChanceBase: 0.5
-      ageChanceIncrement: 0.5
-      probability: 0
-      maxUse: 0
-      currentUsage: 0
-  - characterName: Card 3
-    cardText: 
-    cradImage: {fileID: 0}
-    leftOutcome:
-      description: Sure!
-      fun: 0
-      love: -25
-      money: -3
-      health: 3
-    rightOutcome:
-      description: No...
-      fun: 0
-      love: 5
-      money: 0
-      health: 0
-    chances:
-      ageConstraint: 15
-      ageChanceBase: 0
-      ageChanceIncrement: 0
-      probability: 0
-      maxUse: 0
-      currentUsage: 0
-  - characterName: Card 4
-    cardText: 
-    cradImage: {fileID: 0}
-    leftOutcome:
-      description: Sure!
-      fun: 0
-      love: -25
-      money: -3
-      health: 3
-    rightOutcome:
-      description: No...
-      fun: 0
-      love: 5
-      money: 0
-      health: 0
-    chances:
-      ageConstraint: -30
-      ageChanceBase: 2
-      ageChanceIncrement: 0.5
-      probability: 0
-      maxUse: 3
-      currentUsage: 0
-  - characterName: Card 5
-    cardText: 
-    cradImage: {fileID: 0}
-    leftOutcome:
-      description: Sure!
-      fun: 0
-      love: -25
-      money: -3
-      health: 3
-    rightOutcome:
-      description: No...
-      fun: 0
-      love: 5
-      money: 0
-      health: 0
-    chances:
-      ageConstraint: 20
-      ageChanceBase: 80
-      ageChanceIncrement: -2.3
-      probability: 0
-      maxUse: 0
-      currentUsage: 0
-  - characterName: Card 6
-    cardText: 
-    cradImage: {fileID: 0}
-    leftOutcome:
-      description: Sure!
-      fun: 0
-      love: -25
-      money: -3
-      health: 3
-    rightOutcome:
-      description: No...
-      fun: 0
-      love: 5
-      money: 0
-      health: 0
-    chances:
-      ageConstraint: 60
-      ageChanceBase: 0
-      ageChanceIncrement: 0
-      probability: 0
-      maxUse: 1
-      currentUsage: 0
-  - characterName: Card 7
-    cardText: 
-    cradImage: {fileID: 0}
-    leftOutcome:
-      description: Sure!
-      fun: 0
-      love: -25
-      money: -3
-      health: 3
-    rightOutcome:
-      description: No...
-      fun: 0
-      love: 5
-      money: 0
-      health: 0
-    chances:
-      ageConstraint: -30
-      ageChanceBase: 7
-      ageChanceIncrement: 1.4
-      probability: 0
-      maxUse: 0
-      currentUsage: 0
-  - characterName: Card 8
-    cardText: 
-    cradImage: {fileID: 0}
-    leftOutcome:
-      description: Sure!
-      fun: 0
-      love: -25
-      money: -3
-      health: 3
-    rightOutcome:
-      description: No...
-      fun: 0
-      love: 5
-      money: 0
-      health: 0
-    chances:
-      ageConstraint: -30
-      ageChanceBase: 50
-      ageChanceIncrement: 2.5
-      probability: 0
-      maxUse: 4
-      currentUsage: 0
-  - characterName: Card 9
-    cardText: 
-    cradImage: {fileID: 0}
-    leftOutcome:
-      description: Sure!
-      fun: 0
-      love: -25
-      money: -3
-      health: 3
-    rightOutcome:
-      description: No...
-      fun: 0
-      love: 5
-      money: 0
-      health: 0
-    chances:
-      ageConstraint: 35
-      ageChanceBase: 0
-      ageChanceIncrement: 1.5
-      probability: 0
-      maxUse: 0
-      currentUsage: 0
-  - characterName: Card 10
-    cardText: 
-    cradImage: {fileID: 0}
-    leftOutcome:
-      description: Sure!
-      fun: 0
-      love: -25
-      money: -3
-      health: 3
-    rightOutcome:
-      description: No...
-      fun: 0
-      love: 5
-      money: 0
-      health: 0
-    chances:
-      ageConstraint: -60
-      ageChanceBase: 40
-      ageChanceIncrement: -3.5
-      probability: 0
-      maxUse: 20
-      currentUsage: 0
-  turnPool: []
-  _activeCard:
-    characterName: 
-    cardText: 
-    cradImage: {fileID: 0}
-    leftOutcome:
-      description: 
-      fun: 0
-      love: 0
-      money: 0
-      health: 0
-    rightOutcome:
-      description: 
-      fun: 0
-      love: 0
-      money: 0
-      health: 0
-    chances:
-      ageConstraint: 0
-      ageChanceBase: 0
-      ageChanceIncrement: 0
-      probability: 0
-      maxUse: 0
-      currentUsage: 0
---- !u!114 &1476194020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1476194012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ceea2fa36c0843b2ad7d7effea3816c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameDeck:
-    cards: []
-  manager: {fileID: 1476194018}
 --- !u!1 &1747649874
 GameObject:
   m_ObjectHideFlags: 0

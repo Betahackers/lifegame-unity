@@ -2,17 +2,15 @@
 using System.Collections;
 using AssemblyCSharp;
 
-public class JsonExample : MonoBehaviour {
-
+public class CardDownloader : MonoBehaviour {
 
 	public JSON_Deck gameDeck;
-	public GameManager manager;
-
 
 	// Use this for initialization
 	void Start () {
 		WWW www = new WWW("https://lifegame-api.herokuapp.com/cards");
 		StartCoroutine(WaitForRequest(www));
+		DontDestroyOnLoad (gameObject);
 	}
 
 	IEnumerator WaitForRequest(WWW www)
@@ -35,8 +33,8 @@ public class JsonExample : MonoBehaviour {
 			Debug.Log("WWW Error: "+ www.error);
 		} 
 
-		CardManager.instance.GetCardData ();
-		manager.Init ();
+		CardManager.instance.Init ();
+		Scenes.LoadScene (Scenes.Main);
 	}
 	
 	// Update is called once per frame

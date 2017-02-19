@@ -18,18 +18,16 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	private State state;
 	private Vector3 startPosition, dragPosition, targetPosition;
 	private SwipeDirection swipeDirection;
-	private string answer1, answer2;
 	private Vector3 _fingerOffset;
+	private CardData.Settings cardData;
 
-	enum State {Hidden, Rotating, Idle, Dragging, MovingBack, Swiping};
+	enum State {Hidden, Flipping, Idle, Dragging, MovingBack, Swiping};
 	public enum SwipeDirection {Left, Right};
 	public delegate void OnCardSwiped (CardMovement swipedCard);
 
 
 	void Start () {
 		this.startPosition = this.transform.position;
-		this.targetPosition = this.startPosition;
-		this.targetPosition.x = Screen.width * 0.7f;
 	}
 
 	public void Init (OnCardSwiped onCardSwiped, bool isFirstCard) {
@@ -37,13 +35,20 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 		this.state = (isFirstCard) ? State.Idle : State.Hidden;
 	}
 
+	public void SetCardShown () {
+		this.state = State.Idle;
+	}
+
 	public SwipeDirection GetSwipeResult () {
 		return this.swipeDirection;
 	}
 
-	public void SetAnswers (string answer1, string answer2) {
-		this.answer1 = answer1;
-		this.answer2 = answer2;
+	public void SetCardData (CardData.Settings cardData) {
+		this.cardData = cardData;
+	}
+
+	public CardData.Settings GetCardData () {
+		return this.cardData;
 	}
 
 	public void OnBeginDrag (PointerEventData eventData) {
@@ -69,6 +74,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 //		this.dragPosition = this.transform.position;
 
 		if (IsAboveSwipeDistance ()) {
+			// TODO Also display the parameters
 			DisplayAnswer ();
 		}
 		else {
@@ -80,12 +86,12 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 		answerPanel.SetActive (true);
 		SwipeDirection swipeDirection = GetSwipeDirection ();
 		if (swipeDirection == SwipeDirection.Left) {
-			answerText.text = answer1.ToUpper ();
-//			answerText.alignment = TextAnchor.UpperLeft;
+			answerText.text = cardData.leftOutcome.description.ToUpper ();
+			answerText.alignment = TextAnchor.UpperRight;
 		}
 		else {
-			answerText.text = answer2.ToUpper ();
-//			answerText.alignment = TextAnchor.UpperRight;
+			answerText.text = cardData.rightOutcome.description.ToUpper ();
+			answerText.alignment = TextAnchor.UpperLeft;
 		}
 	}
 
@@ -106,7 +112,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	public void OnEndDrag (PointerEventData eventData) {
 		this.state = (IsAboveSwipeDistance ()) ? State.Swiping : State.MovingBack;
 		if (this.state == State.Swiping) {
-			this.swipeDirection = (transform.position.x > startPosition.x) ? SwipeDirection.Right : SwipeDirection.Left;
+			StartSwipe ();
 		}
 	}
 
@@ -118,41 +124,46 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 		}
 	}
 
-	void Swipe () {
-		float step = this.swipingSpeed * Time.deltaTime;
-		float sign = (this.swipeDirection == SwipeDirection.Right) ? 1 : -1;
-		Vector3 target = targetPosition * sign;
-//		Debug.Log ("TARGET: " + target);
-		this.transform.position = Vector3.MoveTowards (this.transform.position, target, step);
-//		Debug.Log (transform.position);
-		if (Mathf.Approximately (transform.position.x, target.x)) {
-			Debug.Log ("Card swiped!!!");
-			CardSwiped ();
+	void StartSwipe () {
+		this.swipeDirection = (transform.position.x > startPosition.x) ? SwipeDirection.Right : SwipeDirection.Left;
+		this.targetPosition = this.startPosition;
+		if (this.swipeDirection == SwipeDirection.Left) {
+			this.targetPosition.x -= this.startPosition.x + Screen.width * 0.7f;
+		}
+		else {
+			this.targetPosition.x += this.startPosition.x + Screen.width * 0.7f;
 		}
 	}
 
-	void CardSwiped () {
+	void ContinueSwipe () {
+		float step = this.swipingSpeed * Time.deltaTime;
+		this.transform.position = Vector3.MoveTowards (this.transform.position, this.targetPosition, step);
+		if (Mathf.Approximately (transform.position.x, this.targetPosition.x)) {
+			FinishSwipe ();
+		}
+	}
+
+	void FinishSwipe () {
 		this.state = State.Hidden;
 		this.transform.position = startPosition;
 		this.transform.SetAsFirstSibling ();
 		onCardSwiped (this);
 		HideAnswer ();
-		// TODO Get new card data here
 	}
 
-	void Rotate () {
+	void Flip () {
 	}
 
 	void FixedUpdate () {
 		switch (this.state) {
-		case State.Rotating:
-			Rotate ();
+		case State.Flipping:
+			Flip ();
 			break;
 		case State.MovingBack:
 			MoveBack ();
 			break;
 		case State.Swiping:
-			Swipe ();
+			ContinueSwipe ();
 			break;
 		}
 	}

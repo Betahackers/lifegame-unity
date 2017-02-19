@@ -5,25 +5,28 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
-	public CardManager cardManager;
 	public List <CardMovement> cardGOs;
 	public Text question, characterName, age;
 	public Image loveImage, funImage, healthImage, moneyImage;
-	public GameObject loadingPanel;
+
+	private CardManager cardManager;
 
 	// Use this for initialization
-	public void Init () {
-		loadingPanel.SetActive (false);
-//		cardManager.StartDeck ();
-		SetPlayerData ();
+	void Start () {
+		GameObject cardManagerGO = GameObject.Find ("Card Manager");
+		cardManager = cardManagerGO.GetComponent <CardManager> ();
 
 		cardGOs [0].Init (OnCardSwiped, true);
-		SetCardData (cardGOs [0], cardManager.PickCard ());
+		cardGOs [0].SetCardData (cardManager.PickCard ());
+
 		cardGOs [1].Init (OnCardSwiped, false);
-		SetCardData (cardGOs [1], cardManager.PickCard ());
+		cardGOs [1].SetCardData (cardManager.PickCard ());
+
+		DisplayPlayerData ();
+		DisplayCardData (cardGOs [0]);
 	}
 
-	void SetPlayerData () {
+	void DisplayPlayerData () {
 		age.text = (cardManager._initialAge + cardManager._yearsPassed).ToString ();
 		loveImage.fillAmount = cardManager.loveLevel / 100f;
 		funImage.fillAmount = cardManager.familyLevel / 100f;
@@ -34,16 +37,22 @@ public class GameManager : MonoBehaviour {
 	void OnCardSwiped (CardMovement swipedCard) {
 		CardMovement.SwipeDirection swipeDirection = swipedCard.GetSwipeResult ();
 		cardManager.Swipe (swipeDirection == CardMovement.SwipeDirection.Right);
-		SetCardData (swipedCard, cardManager.PickCard ());
-		SetPlayerData ();
+		swipedCard.SetCardData (cardManager.PickCard ());
+
+		DisplayPlayerData ();
+		CardMovement nextCard = (swipedCard == cardGOs [0]) ? cardGOs [1] : cardGOs [0];
+		DisplayCardData (nextCard);
 	}
 
-	void SetCardData (CardMovement cardMovement, CardData.Settings cardData) {
-		// TODO Also send the card image
+	void DisplayCardData (CardMovement card) {
+		card.SetCardShown ();
+		CardData.Settings cardData = card.GetCardData ();
+		if (cardData == null) {
+			// TODO Implement a game over
+			Debug.Log ("GAME OVER!");
+			return;
+		}
 		question.text = cardData.cardText;
 		characterName.text = cardData.characterName.ToUpper ();
-		CardData.Outcome outcome = cardData.rightOutcome;
-//		Debug.Log ("outcome: " + outcome);
-		cardMovement.SetAnswers (cardData.leftOutcome.description, cardData.rightOutcome.description);
 	}
 }

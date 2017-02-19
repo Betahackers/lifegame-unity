@@ -20,6 +20,7 @@ public class CardManager : MonoBehaviour {
 	[SerializeField]public int _yearsPassed;
 	public readonly int _initialAge = 21;
 
+	public int deathAge;
 
 	[Tooltip("All game's cards. We'll build the pool each turn from here")]
 	public List<CardData.Settings> gameDeck = new List<CardData.Settings>();
@@ -34,12 +35,12 @@ public class CardManager : MonoBehaviour {
 
 	private int _linearCardIndex;
 	private ManagerGUI _ui;
-	private JsonExample _json;
+	private CardDownloader cardDownloader;
 
 
 	void Awake () {
 		instance = this;
-		_json = GetComponent<JsonExample> ();
+		cardDownloader = GetComponent<CardDownloader> ();
 		//------------------
 		if (_SOLO_TEST) {
 			_ui = GetComponent<ManagerGUI> ();
@@ -50,7 +51,7 @@ public class CardManager : MonoBehaviour {
 	//===============================================================================================================================================================================
 	//===============================================================================================================================================================================
 	//=====  DECK MANAGEMENT FUNCTIONS
-	public void StartDeck () {
+	private void InitParameters () {
 		// This function just resets things to start over
 		familyLevel = 50;
 		loveLevel = 50;
@@ -62,8 +63,9 @@ public class CardManager : MonoBehaviour {
 		foreach (CardData.Settings card in gameDeck) {
 			card.chances.currentUsage = 0;
 		}
+		deathAge = Random.Range (90, 110);
 		// Build the first pool
-		BuildPool();
+//		BuildPool();
 	}
 
 	private void BuildPool () {
@@ -128,16 +130,23 @@ public class CardManager : MonoBehaviour {
 	}
 
 	public CardData.Settings PickCard () {
-		// Pick a card at random from the pool
-		_activeCard = turnPool[Random.Range(0, turnPool.Count)];
-		turnPool.Remove (_activeCard);
-		// Count our uses. If we reach the limit, remove this card from the game
-		if(!_BYPASS_PROBABILTY)
-			_activeCard.chances.currentUsage++;
-		// If set, update the temp GUI
-		if (_SOLO_TEST)
-			DrawCard ();
+		if (gameDeck.Count == 0) {
+			return null;
+		}
+		_activeCard = gameDeck [0];
+		gameDeck.RemoveAt (0);
 		return _activeCard;
+
+
+//		// Pick a card at random from the pool
+//		_activeCard = turnPool[Random.Range(0, turnPool.Count)];
+//		// Count our uses. If we reach the limit, remove this card from the game
+//		if(!_BYPASS_PROBABILTY)
+//			_activeCard.chances.currentUsage++;
+//		// If set, update the temp GUI
+//		if (_SOLO_TEST)
+//			DrawCard ();
+//		return _activeCard;
 	}
 
 	private void DrawCard () {
@@ -168,46 +177,46 @@ public class CardManager : MonoBehaviour {
 		healthLevel += outcome.health;
 		// Pass the time
 		_yearsPassed += Random.Range(1, 5);
-		BuildPool ();
+//		BuildPool ();
 
 		if (_SOLO_TEST)
 			DrawCard ();
 	}
 
-	public void GetCardData () {
+	public void Init () {
 		// Erase the actual deck
 		gameDeck = new List<CardData.Settings>();
 		// Add all card we got from server
-		for (int i = 0; i < _json.gameDeck.cards.Length; i++) {
+		for (int i = 0; i < cardDownloader.gameDeck.cards.Length; i++) {
 			CardData.Settings newCard = new CardData.Settings ();
-			newCard.characterName = _json.gameDeck.cards [i].person;
-			newCard.cardText = _json.gameDeck.cards [i].title;
-//			newCard.cradImage = _json.gameDeck.cards [i].url_image;
+			newCard.characterName = cardDownloader.gameDeck.cards [i].person;
+			newCard.cardText = cardDownloader.gameDeck.cards [i].title;
+//			newCard.cradImage = cardDownloader.gameDeck.cards [i].url_image;
 
-			for (int j = 0; j < _json.gameDeck.cards[i].answers.Length; j++) {
+			for (int j = 0; j < cardDownloader.gameDeck.cards[i].answers.Length; j++) {
 				CardData.Outcome outcome = new CardData.Outcome ();
-				for (int k = 0; k < _json.gameDeck.cards[i].answers[j].points.Length; k++) {
+				for (int k = 0; k < cardDownloader.gameDeck.cards[i].answers[j].points.Length; k++) {
 					// Store answer's description
-					outcome.description = _json.gameDeck.cards[i].answers[j].text;
+					outcome.description = cardDownloader.gameDeck.cards[i].answers[j].text;
 					// We must manually detect each point type to store
-					switch(_json.gameDeck.cards[i].answers[j].points[k].slug)
+					switch(cardDownloader.gameDeck.cards[i].answers[j].points[k].slug)
 					{
 					case "fun":
-						outcome.fun = _json.gameDeck.cards [i].answers [j].points [k].value;
+						outcome.fun = cardDownloader.gameDeck.cards [i].answers [j].points [k].value;
 						break;
 					case "love":
-						outcome.love = _json.gameDeck.cards [i].answers [j].points [k].value;
+						outcome.love = cardDownloader.gameDeck.cards [i].answers [j].points [k].value;
 						break;
 					case "money":
-						outcome.money = _json.gameDeck.cards [i].answers [j].points [k].value;
+						outcome.money = cardDownloader.gameDeck.cards [i].answers [j].points [k].value;
 						break;
 					case "health":
-						outcome.health = _json.gameDeck.cards [i].answers [j].points [k].value;
+						outcome.health = cardDownloader.gameDeck.cards [i].answers [j].points [k].value;
 						break;
 					}
 				}
 				// Add this outcome to the right swipe
-				if (_json.gameDeck.cards [i].answers [j].type.ToLower () == "right")
+				if (cardDownloader.gameDeck.cards [i].answers [j].type.ToLower () == "right")
 					newCard.rightOutcome = outcome;
 				else
 					newCard.leftOutcome = outcome;
@@ -219,6 +228,6 @@ public class CardManager : MonoBehaviour {
 			// Add this card to the list
 			gameDeck.Add(newCard);
 		}
-		StartDeck ();
+		InitParameters ();
 	}
 }
