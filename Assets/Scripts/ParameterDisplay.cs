@@ -7,14 +7,13 @@ public enum ParameterType {Love, Fun, Health, Money};
 public class ParameterDisplay : MonoBehaviour {
 
 	public ParameterType parameterType;
+	public Image selectedImage;
 
 	private Image fillImage;
-	private Image selectedImage;
 
 	// Use this for initialization
 	public void Init () {
 		fillImage = transform.GetChild (0).GetComponent <Image> ();
-		selectedImage = transform.GetChild (1).GetComponent <Image> ();
 	}
 
 	public void ShowHide(bool show){

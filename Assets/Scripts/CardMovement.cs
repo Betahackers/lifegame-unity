@@ -8,6 +8,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	public GameObject answerPanel;
 	public Text answerText;
 	public Image cardImage;
+	public Text characterName;
 
 	public float movingSpeed = 1500f;
 	public float swipingSpeed = 2500f;
@@ -51,6 +52,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
 	public void SetCardData (CardData.Settings cardData) {
 		this.cardData = cardData;
+		this.characterName.text = cardData.characterName.ToUpper ();
 		// TODO Load the image from resources and fill cardImage
 	}
 
@@ -127,12 +129,12 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 		SwipeDirection swipeDirection = GetSwipeDirection ();
 		CardData.Outcome cardOutcome;
 		if (swipeDirection == SwipeDirection.Left) {
-			answerText.text = cardData.leftOutcome.description.ToUpper ();
+			answerText.text = cardData.leftOutcome.description;
 			answerText.alignment = TextAnchor.UpperRight;
 			cardOutcome = cardData.leftOutcome;
 		}
 		else {
-			answerText.text = cardData.rightOutcome.description.ToUpper ();
+			answerText.text = cardData.rightOutcome.description;
 			answerText.alignment = TextAnchor.UpperLeft;
 			cardOutcome = cardData.rightOutcome;
 		}

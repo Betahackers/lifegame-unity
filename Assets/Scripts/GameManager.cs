@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
 
 	public List <CardMovement> cardGOs;
-	public Text question, characterName, age;
+	public Text question, age;
 	public ParameterDisplay parameterLove;
 	public ParameterDisplay parameterFun;
 	public ParameterDisplay parameterHealth;
@@ -98,6 +98,5 @@ public class GameManager : MonoBehaviour {
 			return;
 		}
 		question.text = cardData.cardText;
-		characterName.text = cardData.characterName.ToUpper ();
 	}
 }
