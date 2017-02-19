@@ -1,0 +1,46 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+public enum ParameterType {Love, Fun, Health, Money};
+
+public class ParameterDisplay : MonoBehaviour {
+
+	public ParameterType parameterType;
+	public Image selectedImage;
+
+	private Image fillImage;
+	private float targetAmount;
+	private float startAmount;
+	private float speed = 0.5f;
+
+	// Use this for initialization
+	public void Init () {
+		fillImage = transform.GetChild (0).GetComponent <Image> ();
+	}
+
+	public void ShowHide(bool show){
+<<<<<<< HEAD
+		selectedImage.gameObject.SetActive (show);
+=======
+		Color c =	selectedImage.color;
+		if (show) {
+			c.a = 1f;
+		} else {
+			c.a = 0f;
+		}
+
+		selectedImage.color = c;
+>>>>>>> 442806c51fb2db2a94b991f3bf368a5cfc1f243f
+	}
+
+	public void Fill(float amount){
+		targetAmount = amount;
+	}
+	// Update is called once per frame
+	void Update () {
+		if (fillImage != null && fillImage.fillAmount*100 != targetAmount) {
+			fillImage.fillAmount  = Mathf.MoveTowards (fillImage.fillAmount, targetAmount/100f,(speed*Time.deltaTime));
+		}
+	}
+}
