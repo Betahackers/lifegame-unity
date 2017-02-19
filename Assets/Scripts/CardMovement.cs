@@ -20,22 +20,27 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	private SwipeDirection swipeDirection;
 	private Vector3 _fingerOffset;
 	private CardData.Settings cardData;
+	private OnAnswerDisplayed onAnswerDisplayed;
+	private OnAnswerHidden onAnswerHidden;
 
 	enum State {Hidden, Flipping, Idle, Dragging, MovingBack, Swiping};
 	public enum SwipeDirection {Left, Right};
 	public delegate void OnCardSwiped (CardMovement swipedCard);
-
+	public delegate void OnAnswerDisplayed (int loveDelta, int funDelta, int healthDelta, int moneyDelta);
+	public delegate void OnAnswerHidden ();
 
 	void Start () {
 		this.startPosition = this.transform.position;
 	}
 
-	public void Init (OnCardSwiped onCardSwiped, bool isFirstCard) {
+	public void Init (OnCardSwiped onCardSwiped, OnAnswerDisplayed onAnswerDisplayed, OnAnswerHidden onAnswerHidden) {
 		this.onCardSwiped = onCardSwiped;
-		this.state = (isFirstCard) ? State.Idle : State.Hidden;
+		this.onAnswerDisplayed = onAnswerDisplayed;
+		this.onAnswerHidden = onAnswerHidden;
+		this.state = State.Hidden;
 	}
 
-	public void SetCardShown () {
+	public void SetCardIdle () {
 		this.state = State.Idle;
 	}
 
@@ -74,7 +79,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 //		this.dragPosition = this.transform.position;
 
 		if (IsAboveSwipeDistance ()) {
-			// TODO Also display the parameters
 			DisplayAnswer ();
 		}
 		else {
@@ -85,18 +89,23 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	void DisplayAnswer () {
 		answerPanel.SetActive (true);
 		SwipeDirection swipeDirection = GetSwipeDirection ();
+		CardData.Outcome cardOutcome;
 		if (swipeDirection == SwipeDirection.Left) {
 			answerText.text = cardData.leftOutcome.description.ToUpper ();
 			answerText.alignment = TextAnchor.UpperRight;
+			cardOutcome = cardData.leftOutcome;
 		}
 		else {
 			answerText.text = cardData.rightOutcome.description.ToUpper ();
 			answerText.alignment = TextAnchor.UpperLeft;
+			cardOutcome = cardData.rightOutcome;
 		}
+		onAnswerDisplayed (cardOutcome.love, cardOutcome.fun, cardOutcome.health, cardOutcome.money);
 	}
 
 	void HideAnswer () {
 		answerPanel.SetActive (false);
+		onAnswerHidden ();
 	}
 
 	bool IsAboveSwipeDistance () {

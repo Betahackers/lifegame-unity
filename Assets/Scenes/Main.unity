@@ -594,6 +594,7 @@ GameObject:
   - 224: {fileID: 748422209}
   - 222: {fileID: 748422211}
   - 114: {fileID: 748422210}
+  - 114: {fileID: 748422212}
   m_Layer: 5
   m_Name: Money
   m_TagString: Untagged
@@ -653,6 +654,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 748422208}
+--- !u!114 &748422212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 748422208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4329b55056bb04b4693975fc86bd6f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameterType: 3
 --- !u!224 &753835825 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000010004156358, guid: 8d4ea84f657634c26a8d1e64bd5807df,
@@ -674,6 +687,7 @@ GameObject:
   - 224: {fileID: 855731436}
   - 222: {fileID: 855731438}
   - 114: {fileID: 855731437}
+  - 114: {fileID: 855731439}
   m_Layer: 5
   m_Name: Fun
   m_TagString: Untagged
@@ -733,6 +747,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 855731435}
+--- !u!114 &855731439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 855731435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4329b55056bb04b4693975fc86bd6f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameterType: 1
 --- !u!1 &976442213
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +946,7 @@ GameObject:
   - 224: {fileID: 1190531382}
   - 222: {fileID: 1190531384}
   - 114: {fileID: 1190531383}
+  - 114: {fileID: 1190531385}
   m_Layer: 5
   m_Name: Love
   m_TagString: Untagged
@@ -966,7 +993,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 73053cc7815184e5ea230f4ff7c596a5, type: 3}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -979,6 +1006,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1190531381}
+--- !u!114 &1190531385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1190531381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4329b55056bb04b4693975fc86bd6f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameterType: 0
 --- !u!1 &1194546311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1345,11 @@ MonoBehaviour:
   funImage: {fileID: 386451140}
   healthImage: {fileID: 280260328}
   moneyImage: {fileID: 1809241641}
+  parameterDisplays:
+  - {fileID: 1190531385}
+  - {fileID: 855731439}
+  - {fileID: 1828697942}
+  - {fileID: 748422212}
 --- !u!1 &1747649874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,6 +1531,7 @@ GameObject:
   - 224: {fileID: 1828697939}
   - 222: {fileID: 1828697941}
   - 114: {fileID: 1828697940}
+  - 114: {fileID: 1828697942}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -1546,3 +1591,15 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1828697938}
+--- !u!114 &1828697942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1828697938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4329b55056bb04b4693975fc86bd6f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameterType: 2

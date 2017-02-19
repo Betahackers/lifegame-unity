@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	public List <CardMovement> cardGOs;
 	public Text question, characterName, age;
 	public Image loveImage, funImage, healthImage, moneyImage;
+	public List <ParameterDisplay> parameterDisplays;
 
 	private CardManager cardManager;
 
@@ -16,10 +17,11 @@ public class GameManager : MonoBehaviour {
 		GameObject cardManagerGO = GameObject.Find ("Card Manager");
 		cardManager = cardManagerGO.GetComponent <CardManager> ();
 
-		cardGOs [0].Init (OnCardSwiped, true);
+		cardGOs [0].Init (OnCardSwiped, OnCardAnswerDisplayed, OnCardAnswerHidden);
+		cardGOs [0].SetCardIdle ();
 		cardGOs [0].SetCardData (cardManager.PickCard ());
 
-		cardGOs [1].Init (OnCardSwiped, false);
+		cardGOs [1].Init (OnCardSwiped, OnCardAnswerDisplayed, OnCardAnswerHidden);
 		cardGOs [1].SetCardData (cardManager.PickCard ());
 
 		DisplayPlayerData ();
@@ -44,8 +46,16 @@ public class GameManager : MonoBehaviour {
 		DisplayCardData (nextCard);
 	}
 
+	void OnCardAnswerDisplayed (int loveDelta, int funDelta, int healthDelta, int moneyDelta) {
+		// TODO Implement with ParameterDisplays
+	}
+
+	void OnCardAnswerHidden () {
+		// TODO Implement with ParameterDisplays
+	}
+
 	void DisplayCardData (CardMovement card) {
-		card.SetCardShown ();
+		card.SetCardIdle ();
 		CardData.Settings cardData = card.GetCardData ();
 		if (cardData == null) {
 			// TODO Implement a game over
