@@ -11,13 +11,12 @@ public class CardManager : MonoBehaviour {
 	[SerializeField]private bool _LINEAR_MODE;
 	[SerializeField]private bool _BYPASS_PROBABILTY;
 
-	private static int INITIAL_LEVEL=50;
 
 	[Header("User stats")]
-	public int familyLevel = INITIAL_LEVEL;
-	public int loveLevel = INITIAL_LEVEL;
-	public int moneyLevel = INITIAL_LEVEL;
-	public int healthLevel = INITIAL_LEVEL;
+	public int familyLevel = GameManager.INITIAL_LEVEL;
+	public int loveLevel = GameManager.INITIAL_LEVEL;
+	public int moneyLevel = GameManager.INITIAL_LEVEL;
+	public int healthLevel = GameManager.INITIAL_LEVEL;
 
 	[SerializeField]public int _yearsPassed;
 	public readonly int _initialAge = 21;
@@ -55,10 +54,10 @@ public class CardManager : MonoBehaviour {
 	//=====  DECK MANAGEMENT FUNCTIONS
 	private void InitParameters () {
 		// This function just resets things to start over
-		familyLevel = INITIAL_LEVEL;
-		loveLevel = INITIAL_LEVEL;
-		moneyLevel = INITIAL_LEVEL;
-		healthLevel = INITIAL_LEVEL;
+		familyLevel = GameManager.INITIAL_LEVEL;
+		loveLevel = GameManager.INITIAL_LEVEL;
+		moneyLevel = GameManager.INITIAL_LEVEL;
+		healthLevel = GameManager.INITIAL_LEVEL;
 		// Clean the internal card data
 		// Reset all cards
 		print(gameDeck.Count);

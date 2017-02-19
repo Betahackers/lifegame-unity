@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour {
 	public ParameterDisplay parameterHealth;
 	public ParameterDisplay parameterMoney;
 
+	public static int INITIAL_LEVEL=25;
+	public static int MAX_LEVEL=50;
+
 	private CardManager cardManager;
 
 	// Use this for initialization

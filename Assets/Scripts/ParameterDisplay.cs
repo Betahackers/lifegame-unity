@@ -33,13 +33,13 @@ public class ParameterDisplay : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		if (!Mathf.Approximately(fillImage.fillAmount * 100,targetAmount)) {
-			if (targetAmount > fillImage.fillAmount * 100) {
+		if (!Mathf.Approximately(fillImage.fillAmount * GameManager.MAX_LEVEL,targetAmount)) {
+			if (targetAmount > fillImage.fillAmount * GameManager.MAX_LEVEL) {
 				fillImage.color = upColor;
 			} else {
 				fillImage.color = downColor;
 			}
-			fillImage.fillAmount = Mathf.MoveTowards (fillImage.fillAmount, targetAmount / 100f, (speed * Time.deltaTime));
+			fillImage.fillAmount = Mathf.MoveTowards (fillImage.fillAmount, targetAmount / GameManager.MAX_LEVEL, (speed * Time.deltaTime));
 		} else {
 			fillImage.color = Color.Lerp (fillImage.color, defaultColor,(speedColor * Time.deltaTime));
 		}
