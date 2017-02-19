@@ -11,11 +11,13 @@ public class CardManager : MonoBehaviour {
 	[SerializeField]private bool _LINEAR_MODE;
 	[SerializeField]private bool _BYPASS_PROBABILTY;
 
+	private static int INITIAL_LEVEL=50;
+
 	[Header("User stats")]
-	public int familyLevel = 50;
-	public int loveLevel = 50;
-	public int moneyLevel = 50;
-	public int healthLevel = 50;
+	public int familyLevel = INITIAL_LEVEL;
+	public int loveLevel = INITIAL_LEVEL;
+	public int moneyLevel = INITIAL_LEVEL;
+	public int healthLevel = INITIAL_LEVEL;
 
 	[SerializeField]public int _yearsPassed;
 	public readonly int _initialAge = 21;
@@ -53,10 +55,10 @@ public class CardManager : MonoBehaviour {
 	//=====  DECK MANAGEMENT FUNCTIONS
 	private void InitParameters () {
 		// This function just resets things to start over
-		familyLevel = 50;
-		loveLevel = 50;
-		moneyLevel = 50;
-		healthLevel = 50;
+		familyLevel = INITIAL_LEVEL;
+		loveLevel = INITIAL_LEVEL;
+		moneyLevel = INITIAL_LEVEL;
+		healthLevel = INITIAL_LEVEL;
 		// Clean the internal card data
 		// Reset all cards
 		print(gameDeck.Count);
@@ -176,7 +178,7 @@ public class CardManager : MonoBehaviour {
 		moneyLevel += outcome.money;
 		healthLevel += outcome.health;
 		// Pass the time
-		_yearsPassed += Random.Range(1, 5);
+		_yearsPassed++;
 //		BuildPool ();
 
 		if (_SOLO_TEST)
@@ -199,6 +201,7 @@ public class CardManager : MonoBehaviour {
 					// Store answer's description
 					outcome.description = cardDownloader.gameDeck.cards[i].answers[j].text;
 					// We must manually detect each point type to store
+					//Debug.Log("Value" + cardDownloader.gameDeck.cards [i].answers [j].points [k].value);
 					switch(cardDownloader.gameDeck.cards[i].answers[j].points[k].slug)
 					{
 					case "fun":

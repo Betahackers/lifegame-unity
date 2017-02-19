@@ -100,13 +100,18 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 				factor = -1;
 			}
 		}
+		Vector3 rotationRevert = new Vector3();
+		rotationRevert.x = 0;
+		rotationRevert.y = 0;
+		rotationRevert.z = (-1)*this.transform.position.z;
+
 		Vector3 rotation = new Vector3();
 		rotation.x = 0;
 		rotation.y = 0;
-		rotation.z = 1;//;factor * (Screen.width/2 - (this.transform.position.x));
+		rotation.z = factor * (Screen.width/2 - (this.transform.position.x));
 
 		rotation.Normalize ();
-
+		this.transform.Rotate (rotationRevert);
 		this.transform.Rotate (rotation);
 		*/
 
@@ -120,6 +125,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 			DisplayAnswer ();
 		}
 		else {
+			
 			HideAnswer ();
 		}
 	}

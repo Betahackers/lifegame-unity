@@ -10,6 +10,9 @@ public class ParameterDisplay : MonoBehaviour {
 	public Image selectedImage;
 
 	private Image fillImage;
+	private float targetAmount;
+	private float startAmount;
+	private float speed = 0.5f;
 
 	// Use this for initialization
 	public void Init () {
@@ -17,21 +20,16 @@ public class ParameterDisplay : MonoBehaviour {
 	}
 
 	public void ShowHide(bool show){
-		Color c =	selectedImage.color;
-		if (show) {
-			c.a = 1f;
-		} else {
-			c.a = 0f;
-		}
-
-		selectedImage.color = c; 
+		selectedImage.gameObject.SetActive (show);
 	}
 
 	public void Fill(float amount){
-		selectedImage.fillAmount =selectedImage.fillAmount + amount;
+		targetAmount = amount;
 	}
 	// Update is called once per frame
 	void Update () {
-	
+		if (fillImage != null && fillImage.fillAmount*100 != targetAmount) {
+			fillImage.fillAmount  = Mathf.MoveTowards (fillImage.fillAmount, targetAmount/100f,(speed*Time.deltaTime));
+		}
 	}
 }

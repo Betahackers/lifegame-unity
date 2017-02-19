@@ -31,27 +31,31 @@ public class GameManager : MonoBehaviour {
 		parameterHealth.Init();
 		parameterMoney.Init ();
 
+		FillParametersDisplay ();
 		DisplayPlayerData ();
 		DisplayCardData (cardGOs [0]);
 	}
 
 	void DisplayPlayerData () {
 		age.text = (cardManager._initialAge + cardManager._yearsPassed).ToString ();
-		parameterLove.Fill(cardManager.loveLevel / 100f);
-		parameterFun.Fill(cardManager.familyLevel / 100f);
-		parameterHealth.Fill(cardManager.healthLevel / 100f);
-		parameterMoney.Fill(cardManager.moneyLevel / 100f);
 	}
 
 	void OnCardSwiped (CardMovement swipedCard) {
 		CardMovement.SwipeDirection swipeDirection = swipedCard.GetSwipeResult ();
 		cardManager.Swipe (swipeDirection == CardMovement.SwipeDirection.Right);
 		swipedCard.SetCardData (cardManager.PickCard ());
-
+		FillParametersDisplay ();
 		DisplayPlayerData ();
 		CardMovement nextCard = (swipedCard == cardGOs [0]) ? cardGOs [1] : cardGOs [0];
 		DisplayCardData (nextCard);
 		resetSelectors ();
+	}
+
+	void FillParametersDisplay(){
+		parameterLove.Fill(cardManager.loveLevel);
+		parameterFun.Fill(cardManager.familyLevel);
+		parameterHealth.Fill(cardManager.healthLevel);
+		parameterMoney.Fill(cardManager.moneyLevel);
 	}
 
 	void resetSelectors(){
@@ -64,29 +68,17 @@ public class GameManager : MonoBehaviour {
 	void OnCardAnswerDisplayed (int loveDelta, int funDelta, int healthDelta, int moneyDelta) {
 		// TODO Implement with ParameterDisplays
 		parameterLove.ShowHide (loveDelta != 0);
-		if (loveDelta != 0) {
-			parameterLove.Fill (loveDelta);
-		} 
-
 		parameterFun.ShowHide (funDelta != 0);
-		if (funDelta != 0) {
-			parameterFun.Fill (funDelta);
-		} 
-
 		parameterHealth.ShowHide (healthDelta != 0);
-		if (healthDelta != 0) {
-			parameterHealth.Fill (healthDelta);
-		} 
-
 		parameterMoney.ShowHide (moneyDelta != 0);
-		if (moneyDelta != 0) {
-			parameterMoney.Fill (moneyDelta);
-		}
-	
 	}
 
 	void OnCardAnswerHidden () {
 		// TODO Implement with ParameterDisplays
+		parameterLove.ShowHide (false);
+		parameterFun.ShowHide (false);
+		parameterHealth.ShowHide (false);
+		parameterMoney.ShowHide (false);
 	}
 
 	void DisplayCardData (CardMovement card) {
