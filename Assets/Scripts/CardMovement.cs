@@ -53,7 +53,12 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	public void SetCardData (CardData.Settings cardData) {
 		this.cardData = cardData;
 		this.characterName.text = cardData.characterName.ToUpper ();
-		// TODO Load the image from resources and fill cardImage
+		this.cardImage.sprite = Resources.Load <Sprite> (GetCardImagePath (cardData.characterName));
+	}
+
+	private static string GetCardImagePath (string characterName) {
+		// TODO Implement missing cards if necessary
+		return "Cards/" + characterName;
 	}
 
 	public CardData.Settings GetCardData () {
