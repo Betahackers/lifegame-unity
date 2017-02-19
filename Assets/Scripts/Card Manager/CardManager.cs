@@ -56,6 +56,12 @@ public class CardManager : MonoBehaviour {
 		loveLevel = 50;
 		moneyLevel = 50;
 		healthLevel = 50;
+		// Clean the internal card data
+		// Reset all cards
+		print(gameDeck.Count);
+		foreach (CardData.Settings card in gameDeck) {
+			card.chances.currentUsage = 0;
+		}
 		// Build the first pool
 		BuildPool();
 	}
@@ -124,6 +130,7 @@ public class CardManager : MonoBehaviour {
 	public CardData.Settings PickCard () {
 		// Pick a card at random from the pool
 		_activeCard = turnPool[Random.Range(0, turnPool.Count)];
+		turnPool.Remove (_activeCard);
 		// Count our uses. If we reach the limit, remove this card from the game
 		if(!_BYPASS_PROBABILTY)
 			_activeCard.chances.currentUsage++;
@@ -177,7 +184,6 @@ public class CardManager : MonoBehaviour {
 			newCard.cardText = _json.gameDeck.cards [i].title;
 //			newCard.cradImage = _json.gameDeck.cards [i].url_image;
 
-			bool isRight = false;
 			for (int j = 0; j < _json.gameDeck.cards[i].answers.Length; j++) {
 				CardData.Outcome outcome = new CardData.Outcome ();
 				for (int k = 0; k < _json.gameDeck.cards[i].answers[j].points.Length; k++) {
@@ -206,6 +212,10 @@ public class CardManager : MonoBehaviour {
 				else
 					newCard.leftOutcome = outcome;
 			}
+			// Get the probability data
+			CardData.Chances chances = new CardData.Chances();
+			newCard.chances = chances;
+			//-------------------------------------------
 			// Add this card to the list
 			gameDeck.Add(newCard);
 		}

@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour {
 		question.text = cardData.cardText;
 		characterName.text = cardData.characterName.ToUpper ();
 		CardData.Outcome outcome = cardData.rightOutcome;
-		Debug.Log ("outcome: " + outcome);
+//		Debug.Log ("outcome: " + outcome);
 		cardMovement.SetAnswers (cardData.leftOutcome.description, cardData.rightOutcome.description);
 	}
 }

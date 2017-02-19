@@ -22,13 +22,13 @@ public class JsonExample : MonoBehaviour {
 		// check for errors
 		if (www.error == null)
 		{
-			Debug.Log("WWW Ok!");
+//			Debug.Log("WWW Ok!");
 			string json_raw = www.text;
 //			JSON_Deck new_deck = JsonUtility.FromJson<JSON_Deck>("{\"cards\":"+json_raw+"}");
 			gameDeck = JsonUtility.FromJson<JSON_Deck>("{\"cards\":"+json_raw+"}");
 		
 			foreach(JSON_Card new_card in gameDeck.cards) {
-				print(new_card);
+//				print(new_card);
 			}
 
 		} else {

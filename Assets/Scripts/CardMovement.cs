@@ -122,9 +122,9 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 		float step = this.swipingSpeed * Time.deltaTime;
 		float sign = (this.swipeDirection == SwipeDirection.Right) ? 1 : -1;
 		Vector3 target = targetPosition * sign;
-		Debug.Log ("TARGET: " + target);
+//		Debug.Log ("TARGET: " + target);
 		this.transform.position = Vector3.MoveTowards (this.transform.position, target, step);
-		Debug.Log (transform.position);
+//		Debug.Log (transform.position);
 		if (Mathf.Approximately (transform.position.x, target.x)) {
 			Debug.Log ("Card swiped!!!");
 			CardSwiped ();
