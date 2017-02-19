@@ -35,12 +35,12 @@ public class GameManager : MonoBehaviour {
 		cardGOs [1].Init (OnCardSwiped, OnCardAnswerDisplayed, OnCardAnswerHidden);
 		cardGOs [1].SetCardData (cardManager.PickCard ());
 
-		parameterLove.Init();
-		parameterFun.Init();
-		parameterHealth.Init();
-		parameterMoney.Init ();
+		parameterLove.Init(GameManager.INITIAL_LEVEL);
+		parameterFun.Init(GameManager.INITIAL_LEVEL);
+		parameterHealth.Init(GameManager.INITIAL_LEVEL);
+		parameterMoney.Init (GameManager.INITIAL_LEVEL);
 
-		FillParametersDisplay ();
+		resetSelectors ();	
 		DisplayPlayerData ();
 		DisplayCardData (cardGOs [0]);
 	}
@@ -92,11 +92,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnCardAnswerHidden () {
-		// TODO Implement with ParameterDisplays
-		parameterLove.ShowHide (false);
-		parameterFun.ShowHide (false);
-		parameterHealth.ShowHide (false);
-		parameterMoney.ShowHide (false);
+		resetSelectors ();
 	}
 
 	void DisplayCardData (CardMovement card) {
