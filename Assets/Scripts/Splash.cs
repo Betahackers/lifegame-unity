@@ -5,6 +5,7 @@ public class Splash : MonoBehaviour {
 
 	public SplashAnimation splashAnimation;
 	public CardDownloader cardDownloader;
+	public GameObject audioManager;
 
 	private bool animationEnded, cardsLoaded;
 
@@ -13,6 +14,7 @@ public class Splash : MonoBehaviour {
 		animationEnded = cardsLoaded = false;
 		splashAnimation.Init (OnAnimationEnded);
 		cardDownloader.Init (OnCardsDownloaded);
+		DontDestroyOnLoad (audioManager);
 	}
 
 	void OnAnimationEnded () {
