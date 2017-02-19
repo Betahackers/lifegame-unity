@@ -19,10 +19,12 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	private Vector3 startPosition, dragPosition, targetPosition;
 	private SwipeDirection swipeDirection;
 	private string answer1, answer2;
+	private Vector3 _fingerOffset;
 
 	enum State {Hidden, Rotating, Idle, Dragging, MovingBack, Swiping};
 	public enum SwipeDirection {Left, Right};
 	public delegate void OnCardSwiped (CardMovement swipedCard);
+
 
 	void Start () {
 		this.startPosition = this.transform.position;
@@ -48,10 +50,12 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 		if (this.state == State.Idle) {
 			this.state = State.Dragging;
 			this.dragPosition = Input.mousePosition;
+			_fingerOffset = transform.position - Input.mousePosition;
 		}
 	}
 
 	public void OnDrag (PointerEventData eventData) {
+//		Vector3 position = Input.mousePosition + _fingerOffset;
 		Vector3 position = Input.mousePosition + (Vector3.up * Screen.height * 0.15f);
 		if (Mathf.Abs (position.y) > yLimit) {
 			// TODO Implement y limit

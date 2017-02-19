@@ -1470,7 +1470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _SOLO_TEST: 0
-  _LINEAR_MODE: 1
+  _LINEAR_MODE: 0
   _BYPASS_PROBABILTY: 1
   familyLevel: 50
   loveLevel: 50
