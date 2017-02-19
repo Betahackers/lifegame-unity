@@ -7,7 +7,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
 	public GameObject answerPanel;
 	public Text answerText;
-	public RawImage cardImage;
+	public Image cardImage;
 
 	public float movingSpeed = 1500f;
 	public float swipingSpeed = 2500f;
@@ -50,6 +50,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
 	public void SetCardData (CardData.Settings cardData) {
 		this.cardData = cardData;
+		// TODO Load the image from resources and fill cardImage
 	}
 
 	public CardData.Settings GetCardData () {
