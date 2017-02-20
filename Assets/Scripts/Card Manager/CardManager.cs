@@ -191,7 +191,7 @@ public class CardManager : MonoBehaviour {
 		for (int i = 0; i < cardDownloader.gameDeck.cards.Length; i++) {
 			CardData.Settings newCard = new CardData.Settings ();
 			newCard.characterName = cardDownloader.gameDeck.cards [i].person;
-			Debug.Log (newCard.characterName);
+//			Debug.Log (newCard.characterName);
 			newCard.cardText = cardDownloader.gameDeck.cards [i].title;
 //			newCard.cradImage = cardDownloader.gameDeck.cards [i].url_image;
 

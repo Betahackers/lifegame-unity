@@ -31,7 +31,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	public delegate void OnAnswerHidden ();
 
 	void Start () {
-		Debug.Log ("Start:" + startPosition);
 		this.startPosition = this.transform.position;
 	}
 
@@ -57,7 +56,14 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	}
 
 	private static string GetCardImagePath (string characterName) {
-		// TODO Implement missing cards if necessary
+		switch (characterName) {
+		case "ex":
+		case "kid":
+		case "lover":
+		case "sex friends":
+			characterName += (Random.Range (1, 2) == 1) ? " M" : " F";
+			break;
+		}
 		return "Cards/" + characterName;
 	}
 

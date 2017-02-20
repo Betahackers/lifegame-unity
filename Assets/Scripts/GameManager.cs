@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour {
 	public ParameterDisplay parameterMoney;
 
 	//Game parameters
-	public static int INITIAL_LEVEL=25; //initial level filled on the parameters health, love...
-	public static int MAX_LEVEL=50; // maximum level can reach in the game 100% for parameters heath, love, etc
+	public static int INITIAL_LEVEL=50; //initial level filled on the parameters health, love...
+	public static int MAX_LEVEL=100; // maximum level can reach in the game 100% for parameters heath, love, etc
 	public static int MAX_AGE=100; // max age can reach the player
 
 	private CardManager cardManager;
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
 		parameterHealth.Init(GameManager.INITIAL_LEVEL);
 		parameterMoney.Init (GameManager.INITIAL_LEVEL);
 
-		resetSelectors ();	
+		ResetSelectors ();	
 		DisplayPlayerData ();
 		DisplayCardData (cardGOs [0]);
 	}
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour {
 		if (overReason == GameOverReason.Alive) {
 			swipedCard.SetCardData (card);
 			DisplayCardData (nextCard);
-			resetSelectors ();	
+			ResetSelectors ();	
 		} else {
 			GameOver.SetupGameOver (overReason, cardManager._initialAge + cardManager._yearsPassed);
 			Scenes.LoadScene (Scenes.GameOver);
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour {
 		parameterMoney.Fill(cardManager.moneyLevel);
 	}
 
-	void resetSelectors(){
+	void ResetSelectors(){
 		parameterLove.ShowHide(false);
 		parameterFun.ShowHide(false);
 		parameterHealth.ShowHide(false);
@@ -84,7 +84,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnCardAnswerDisplayed (int loveDelta, int funDelta, int healthDelta, int moneyDelta) {
-		// TODO Implement with ParameterDisplays
 		parameterLove.ShowHide (loveDelta != 0);
 		parameterFun.ShowHide (funDelta != 0);
 		parameterHealth.ShowHide (healthDelta != 0);
@@ -92,7 +91,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnCardAnswerHidden () {
-		resetSelectors ();
+		ResetSelectors ();
 	}
 
 	void DisplayCardData (CardMovement card) {
@@ -101,7 +100,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	GameOverReason CheckGameOver(CardMovement card){
-		Debug.Log ("h" +cardManager.healthLevel+ "L" +cardManager.loveLevel+ "M"+cardManager.moneyLevel+"F" +cardManager.familyLevel);
 		CardData.Settings cardData = card.GetCardData ();
 		if (cardData == null) {
 			return GameOverReason.OutOfCards;

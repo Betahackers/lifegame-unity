@@ -10,8 +10,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Betahaus
-  productName: Random Life
+  companyName: Gorilla Arm
+  productName: My Random Story
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenStyle: 0
@@ -93,8 +93,8 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.Ludorama.TestApp
-  bundleVersion: 0.1
+  bundleIdentifier: io.gorillaarm.myrandomstory
+  bundleVersion: 1
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   xboxOneDisableKinectGpuReservation: 0
@@ -164,8 +164,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: random_life.keystore
+  AndroidKeyaliasName: jay.neb
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1

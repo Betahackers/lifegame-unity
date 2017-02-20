@@ -42,7 +42,7 @@ public class GameOver : MonoBehaviour {
 	string GetParameterName () {
 		switch (gameOverReason) {
 		default:
-			return "";
+			return "Health";
 		case GameManager.GameOverReason.FullFun:
 		case GameManager.GameOverReason.NoFun:
 			return "Fun";
@@ -62,14 +62,9 @@ public class GameOver : MonoBehaviour {
 		ageText.text = deathAge.ToString ();
 		targetPosition = GetTargetPosition ();
 
-		if (gameOverReason == GameManager.GameOverReason.Aged || gameOverReason == GameManager.GameOverReason.OutOfCards) {
-			parameterIcon.gameObject.SetActive (false);
-		}
-		else {
-			string parameterName = GetParameterName ();
-			parameterIcon.sprite = GetParemeterSprite (parameterName);
-			parameterIcon.color = (targetPosition == 1f) ? upColorIcon : downColorIcon;
-		}
+		string parameterName = GetParameterName ();
+		parameterIcon.sprite = GetParemeterSprite (parameterName);
+		parameterIcon.color = (targetPosition == 1f) ? upColorIcon : downColorIcon;
 
 		JSON_Ending jsonEnding = CardDownloader.instance.gameDeck.GetEnding (gameOverReason);
 		causeText.text = jsonEnding.cause;
