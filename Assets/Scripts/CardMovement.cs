@@ -17,14 +17,14 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
 	private OnCardSwiped onCardSwiped;
 	private State state;
-	private Vector3 startPosition, dragPosition, targetPosition;
+	private Vector3 startPosition, targetPosition;
 	private SwipeDirection swipeDirection;
-	private Vector3 _fingerOffset;
+	private Vector3 fingerOffset;
 	private CardData.Settings cardData;
 	private OnAnswerDisplayed onAnswerDisplayed;
 	private OnAnswerHidden onAnswerHidden;
 
-	enum State {Hidden, Flipping, Idle, Dragging, MovingBack, Swiping};
+	enum State {Hidden, Idle, Dragging, MovingBack, Swiping};
 	public enum SwipeDirection {Left, Right};
 	public delegate void OnCardSwiped (CardMovement swipedCard);
 	public delegate void OnAnswerDisplayed (int loveDelta, int funDelta, int healthDelta, int moneyDelta);
@@ -45,14 +45,18 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 		this.state = State.Idle;
 	}
 
-	public SwipeDirection GetSwipeResult () {
-		return this.swipeDirection;
+	public CardData.Outcome GetSwipeOutcome () {
+		CardData.Outcome outcome = (this.swipeDirection == SwipeDirection.Left) ? this.cardData.leftOutcome : this.cardData.rightOutcome;
+		return outcome;
 	}
 
 	public void SetCardData (CardData.Settings cardData) {
 		this.cardData = cardData;
-		this.characterName.text = cardData.characterName.ToUpper ();
-		this.cardImage.sprite = Resources.Load <Sprite> (GetCardImagePath (cardData.characterName));
+		// If not ran out of cards, set the new data
+		if (this.cardData != null) {
+			this.characterName.text = cardData.characterName.ToUpper ();
+			this.cardImage.sprite = Resources.Load <Sprite> (GetCardImagePath (cardData.characterName));
+		}
 	}
 
 	private static string GetCardImagePath (string characterName) {
@@ -61,7 +65,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 		case "kid":
 		case "lover":
 		case "sex friends":
-			characterName += (Random.Range (1, 2) == 1) ? " M" : " F";
+			characterName += (Random.Range (0, 2) == 1) ? " M" : " F";
 			break;
 		}
 		return "Cards/" + characterName;
@@ -74,68 +78,35 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	public void OnBeginDrag (PointerEventData eventData) {
 		if (this.state == State.Idle) {
 			this.state = State.Dragging;
-			this.dragPosition = Input.mousePosition;
-			_fingerOffset = transform.position - Input.mousePosition;
+			this.fingerOffset = transform.position - Input.mousePosition;
 		}
 	}
 
+	// Card is rotated in OnDrag, MoveBack ContinueSwipe and FinishSwipe
+	void RotateCard () {
+		Quaternion rotation = transform.rotation;
+		float zAngle = GetDragAngle ();
+		rotation.eulerAngles = new Vector3 (0f, 0f, zAngle);
+		transform.rotation = rotation;
+	}
+
+	float GetDragAngle () {
+		float angleMultiplier = 0.05f;
+		float xDisplacement = startPosition.x - transform.position.x;
+		return xDisplacement * angleMultiplier;
+	}
+
 	public void OnDrag (PointerEventData eventData) {
-//		Vector3 position = Input.mousePosition + _fingerOffset;
-		Vector3 position = Input.mousePosition + (Vector3.up * Screen.height * 0.15f);
+//		Vector3 position = Input.mousePosition + (Vector3.up * Screen.height * 0.15f);
+		Vector3 position = Input.mousePosition + fingerOffset;
+		transform.position = position;
 
-		if (Mathf.Abs (position.y) > yLimit) {
-			// TODO Implement y limit
-//			position.y = Mathf.Sign (position.y) * yLimit;
-		}
-
-
-		Vector3 lastPosition = this.transform.position;
-		this.transform.position = position;
-
-		/*
-		 //This a misstry to rotate the image ;(
-		 if (GetSwipeDirection () == SwipeDirection.Right) {
-			Debug.Log ("SwipeDirection: Right");
-			if (lastPosition.x < this.transform.position.x) {
-				factor = 1;
-			} else {
-				factor = -1;
-			}
-		
-		} else {
-			Debug.Log ("SwipeDirection: Left");
-			if (lastPosition.x > this.transform.position.x) {
-				factor = 1;
-			} else {
-				factor = -1;
-			}
-		}
-		Vector3 rotationRevert = new Vector3();
-		rotationRevert.x = 0;
-		rotationRevert.y = 0;
-		rotationRevert.z = (-1)*this.transform.position.z;
-
-		Vector3 rotation = new Vector3();
-		rotation.x = 0;
-		rotation.y = 0;
-		rotation.z = factor * (Screen.width/2 - (this.transform.position.x));
-
-		rotation.Normalize ();
-		this.transform.Rotate (rotationRevert);
-		this.transform.Rotate (rotation);
-		*/
-
-
-		// TODO Change this later
-//		Vector3 displacement = Input.mousePosition - this.dragPosition;
-//		this.transform.position += displacement;
-//		this.dragPosition = this.transform.position;
+		RotateCard ();
 
 		if (IsAboveSwipeDistance ()) {
 			DisplayAnswer ();
 		}
 		else {
-			
 			HideAnswer ();
 		}
 	}
@@ -163,7 +134,8 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	}
 
 	bool IsAboveSwipeDistance () {
-		float distance = Vector3.Distance (startPosition, transform.position);
+//		float distance = Vector3.Distance (startPosition, transform.position);
+		float distance = Mathf.Abs (startPosition.x - transform.position.x);
 		return distance > this.minSwipeDistance;
 	}
 
@@ -182,6 +154,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	void MoveBack () {
 		float step = this.movingSpeed * Time.deltaTime;
 		this.transform.position = Vector2.MoveTowards (transform.position, startPosition, step);
+		RotateCard ();
 		if (this.transform.position == startPosition) {
 			this.state = State.Idle;
 		}
@@ -201,6 +174,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	void ContinueSwipe () {
 		float step = this.swipingSpeed * Time.deltaTime;
 		this.transform.position = Vector3.MoveTowards (this.transform.position, this.targetPosition, step);
+		RotateCard ();
 		if (Mathf.Approximately (transform.position.x, this.targetPosition.x)) {
 			FinishSwipe ();
 		}
@@ -209,19 +183,14 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	void FinishSwipe () {
 		this.state = State.Hidden;
 		this.transform.position = startPosition;
+		RotateCard ();
 		this.transform.SetAsFirstSibling ();
 		onCardSwiped (this);
 		HideAnswer ();
 	}
 
-	void Flip () {
-	}
-
 	void FixedUpdate () {
 		switch (this.state) {
-		case State.Flipping:
-			Flip ();
-			break;
 		case State.MovingBack:
 			MoveBack ();
 			break;

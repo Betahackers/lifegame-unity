@@ -27,11 +27,11 @@ public class ParameterDisplay : MonoBehaviour {
 		fillImage.fillAmount = initValue / GameManager.MAX_LEVEL;
 	}
 
-	public void ShowHide(bool show){
+	public void ShowHideSelector (bool show){
 		selectedImage.gameObject.SetActive (show);
 	}
 
-	public void Fill(float amount){
+	public void Fill (float amount) {
 		filling = true;
 		targetAmount = amount;
 	}

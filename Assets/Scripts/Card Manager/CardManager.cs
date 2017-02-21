@@ -168,9 +168,7 @@ public class CardManager : MonoBehaviour {
 	//===============================================================================================================================================================================
 	//===============================================================================================================================================================================
 	//=====  ACTION PLAY FUNCTIONS
-	public void Swipe (bool rightSwipe) {
-		// Pick the right outcome to work with
-		CardData.Outcome outcome = rightSwipe == true ? _activeCard.rightOutcome : _activeCard.leftOutcome;
+	public void ComputeSwipeOutcome (CardData.Outcome outcome) {
 		// Apply the outcome
 		familyLevel += outcome.fun;
 		loveLevel += outcome.love;

@@ -128,8 +128,8 @@ MonoBehaviour:
   answerText: {fileID: 114000010373126032}
   cardImage: {fileID: 114000012748875888}
   characterName: {fileID: 114000011505414662}
-  movingSpeed: 1500
-  swipingSpeed: 7000
+  movingSpeed: 2500
+  swipingSpeed: 8000
   minSwipeDistance: 100
   yLimit: 10
 --- !u!114 &114000011489373982

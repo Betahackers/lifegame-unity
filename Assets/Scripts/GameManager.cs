@@ -29,15 +29,14 @@ public class GameManager : MonoBehaviour {
 		cardManager = cardManagerGO.GetComponent <CardManager> ();
 
 		cardGOs [0].Init (OnCardSwiped, OnCardAnswerDisplayed, OnCardAnswerHidden);
-		cardGOs [0].SetCardIdle ();
 		cardGOs [0].SetCardData (cardManager.PickCard ());
 
 		cardGOs [1].Init (OnCardSwiped, OnCardAnswerDisplayed, OnCardAnswerHidden);
 		cardGOs [1].SetCardData (cardManager.PickCard ());
 
-		parameterLove.Init(GameManager.INITIAL_LEVEL);
-		parameterFun.Init(GameManager.INITIAL_LEVEL);
-		parameterHealth.Init(GameManager.INITIAL_LEVEL);
+		parameterLove.Init (GameManager.INITIAL_LEVEL);
+		parameterFun.Init (GameManager.INITIAL_LEVEL);
+		parameterHealth.Init (GameManager.INITIAL_LEVEL);
 		parameterMoney.Init (GameManager.INITIAL_LEVEL);
 
 		ResetSelectors ();	
@@ -50,44 +49,45 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnCardSwiped (CardMovement swipedCard) {
-		CardMovement.SwipeDirection swipeDirection = swipedCard.GetSwipeResult ();
-		cardManager.Swipe (swipeDirection == CardMovement.SwipeDirection.Right);
+		CardData.Outcome outcome = swipedCard.GetSwipeOutcome ();
+		cardManager.ComputeSwipeOutcome (outcome);
 		FillParametersDisplay ();
 		DisplayPlayerData ();
+		ResetSelectors ();
 
 		CardData.Settings card = cardManager.PickCard ();
 
 		CardMovement nextCard = (swipedCard == cardGOs [0]) ? cardGOs [1] : cardGOs [0];
-		GameOverReason overReason= CheckGameOver (nextCard);
+		GameOverReason overReason = CheckGameOver (nextCard);
 		if (overReason == GameOverReason.Alive) {
 			swipedCard.SetCardData (card);
 			DisplayCardData (nextCard);
-			ResetSelectors ();	
-		} else {
+		}
+		else {
 			GameOver.SetupGameOver (overReason, cardManager._initialAge + cardManager._yearsPassed);
 			Scenes.LoadScene (Scenes.GameOver);
 		}
 	}
 
-	void FillParametersDisplay(){
-		parameterLove.Fill(cardManager.loveLevel);
-		parameterFun.Fill(cardManager.familyLevel);
-		parameterHealth.Fill(cardManager.healthLevel);
-		parameterMoney.Fill(cardManager.moneyLevel);
+	void FillParametersDisplay () {
+		parameterLove.Fill (cardManager.loveLevel);
+		parameterFun.Fill (cardManager.familyLevel);
+		parameterHealth.Fill (cardManager.healthLevel);
+		parameterMoney.Fill (cardManager.moneyLevel);
 	}
 
-	void ResetSelectors(){
-		parameterLove.ShowHide(false);
-		parameterFun.ShowHide(false);
-		parameterHealth.ShowHide(false);
-		parameterMoney.ShowHide(false);
+	void ResetSelectors () {
+		parameterLove.ShowHideSelector (false);
+		parameterFun.ShowHideSelector (false);
+		parameterHealth.ShowHideSelector (false);
+		parameterMoney.ShowHideSelector (false);
 	}
 
 	void OnCardAnswerDisplayed (int loveDelta, int funDelta, int healthDelta, int moneyDelta) {
-		parameterLove.ShowHide (loveDelta != 0);
-		parameterFun.ShowHide (funDelta != 0);
-		parameterHealth.ShowHide (healthDelta != 0);
-		parameterMoney.ShowHide (moneyDelta != 0);
+		parameterLove.ShowHideSelector (loveDelta != 0);
+		parameterFun.ShowHideSelector (funDelta != 0);
+		parameterHealth.ShowHideSelector (healthDelta != 0);
+		parameterMoney.ShowHideSelector (moneyDelta != 0);
 	}
 
 	void OnCardAnswerHidden () {
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour {
 
 	void DisplayCardData (CardMovement card) {
 		card.SetCardIdle ();
-		question.text =card.GetCardData ().cardText;
+		question.text = card.GetCardData ().cardText;
 	}
 
 	GameOverReason CheckGameOver(CardMovement card){
