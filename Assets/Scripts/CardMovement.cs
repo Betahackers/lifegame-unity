@@ -91,7 +91,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 	}
 
 	float GetDragAngle () {
-		float angleMultiplier = 0.05f;
+		float angleMultiplier = 0.03f;
 		float xDisplacement = startPosition.x - transform.position.x;
 		return xDisplacement * angleMultiplier;
 	}

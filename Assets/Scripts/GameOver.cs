@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Fabric.Answers;
 
 public class GameOver : MonoBehaviour {
 
@@ -18,6 +19,9 @@ public class GameOver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		// Log level end with fabric
+		Answers.LogLevelEnd (null, deathAge, true);
+
 		scrollRect.verticalNormalizedPosition = 0.5f;
 		SetupGameOver ();
 	}

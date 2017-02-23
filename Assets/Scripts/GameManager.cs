@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Fabric.Answers;
 
 public class GameManager : MonoBehaviour {
 
@@ -25,6 +26,9 @@ public class GameManager : MonoBehaviour {
 	public enum ParameterType {Love, Fun, Health, Money};
 	// Use this for initialization
 	void Start () {
+		// Logging level start with Fabric
+		Answers.LogLevelStart ();
+
 		GameObject cardManagerGO = GameObject.Find ("Card Manager");
 		cardManager = cardManagerGO.GetComponent <CardManager> ();
 

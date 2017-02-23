@@ -12,8 +12,10 @@ public class ParameterDisplay : MonoBehaviour {
 	private Image fillImage;
 	private float targetAmount;
 	private float startAmount;
-	private float speed = 1f;
-	private float speedColor = 15f;
+	// Fill speed
+	private float speed = 0.8f;
+	// Color change speed
+	private float speedColor = 5f;
 
 	private Color downColor = new Color(255f/256f, 72f/256f, 93f/256f);
 	private Color upColor = new Color(80f/256f, 277f/256f, 194f/256f);
